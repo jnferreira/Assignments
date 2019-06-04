@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-#from mpl_toolkits.mplot3dp import axes3d
+from mpl_toolkits.mplot3dp import axes3d
 from computeCost import computeCost
 from gradientDescent import gradientDescent
 from sklearn.linear_model import LinearRegression
