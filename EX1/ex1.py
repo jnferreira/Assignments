@@ -1,10 +1,12 @@
+#!/usr/bin/python3
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 from mpl_toolkits.mplot3d import axes3d
-from computeCost import computeCost
-from gradientDescent import gradientDescent
+
+import computeCost
+import gradientDescent
 from sklearn.linear_model import LinearRegression
 
 pd.set_option('display.notebook_repr_html', False)
@@ -36,14 +38,19 @@ plt.ylabel('Profit in $10,000s')
 
 #plt.show()
 
+#theta , Cost_J = gradientDescent(X, y)
+#print('theta: ',theta.ravel())
+
+#plt.plot(Cost_J)
+#plt.ylabel('Cost J')
+#plt.xlabel('Iterations')
+
+
+#plt.show()
+
 theta , Cost_J = gradientDescent(X, y)
 print('theta: ',theta.ravel())
 
 plt.plot(Cost_J)
 plt.ylabel('Cost J')
-plt.xlabel('Iterations')
-
-
-#plt.show()
-
-computeCost(X, y)
+plt.xlabel('Iterations');
