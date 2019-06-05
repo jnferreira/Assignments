@@ -38,6 +38,6 @@ def gradientReg(theta, lamb, XX, y):
 
     g = (1 / m) * XX.T.dot(h - y) + (lamb/(m))*np.sum(np.square(theta[1:]))
 
-    return(g.flatten())
+    return(g.flatten)
     
 
