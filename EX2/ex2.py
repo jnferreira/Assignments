@@ -5,6 +5,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import plotdata
 import sigmoid
+import costFunGrad
 
 from scipy.optimize import minimize
 
@@ -27,3 +28,8 @@ y = np.c_[data[:,2]]
 #print (np.ones((data.shape[0],1)), data[:,0:2])
 
 plotdata.plotData(data, 'Exam 1 score', 'Exam 2 score', 'Admitted', 'Not admitted')
+
+initial_theta = np.zeros(X.shape[1])
+
+print('Cost ', costFunGrad.costFunction(initial_theta, X, y))
+print('Gradient ', costFunGrad.gradient(initial_theta, X, y))
