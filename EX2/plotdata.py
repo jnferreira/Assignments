@@ -21,3 +21,4 @@ def plotData(data, label_x, label_y, label_pos, label_neg, axes=None):
     axes.set_xlabel(label_x)
     axes.set_ylabel(label_y)
     axes.legend(frameon= True, fancybox = True)
+    plt.show()
