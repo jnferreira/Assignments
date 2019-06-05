@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import plotdata
 import sigmoid
 import costFunGrad
+import predict
 
 from scipy.optimize import minimize
 
@@ -31,5 +32,18 @@ plotdata.plotData(data, 'Exam 1 score', 'Exam 2 score', 'Admitted', 'Not admitte
 
 initial_theta = np.zeros(X.shape[1])
 
-print('Cost ', costFunGrad.costFunction(initial_theta, X, y))
-print('Gradient ', costFunGrad.gradient(initial_theta, X, y))
+cost = costFunGrad.costFunction(initial_theta, X, y)
+grad = costFunGrad.gradient(initial_theta, X, y)
+
+print('Cost ', cost)
+print('Gradient ', grad)
+
+res = minimize(costFunGrad.costFunction, initial_theta, args=(X,y), method=None, jac=costFunGrad.gradient, options={'maxiter':400})
+#Gives the best theta
+print(res.x)
+
+#print(sigmoid.sigmoid(np.array([1, 85, 85]).dot(res.x.T)))
+
+p = predict.predict(res.x, X)
+
+print('Train accuracy {}%'.format(100*sum(p == y.ravel())/p.size))
