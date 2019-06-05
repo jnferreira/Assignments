@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import plotdata
+import sigmoid
 
 from scipy.optimize import minimize
 
