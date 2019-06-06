@@ -54,11 +54,23 @@ print('Training set accurancy: {} %'.format(np.mean(pred == y.ravel())*100))
 # Multiclass Logistic Regression with scikit-learn
 
 
-clf = LogisticRegression(C=10, penalty='12', solver='liblinear')
+#clf = LogisticRegression(C=10, penalty='12', solver='liblinear')
 
-clf.fit(X[:,1:],y.ravel())
+#clf.fit(X[:,1:],y.ravel())
 
-pred2 = clf.predict(X[:,1:])
-print('Training set accuracy: {} %'.format(np.mean(pred2 == y.ravel())*100))
+#pred2 = clf.predict(X[:,1:])
+#print('Training set accuracy: {} %'.format(np.mean(pred2 == y.ravel())*100))
 
+def predict(theta_1, theta_2, features):
+    z2 = theta_1.dot(features.T)
+    a2 = np.c_[np.ones((data['X'].shape[0],1)), sigmoid.sigmoid(z2).T]
+    
+    z3 = a2.dot(theta_2.T)
+    a3 = sigmoid.sigmoid(z3)
+        
+    return(np.argmax(a3, axis=1)+1) 
+
+
+pred = predict(theta1, theta2, X)
+print('Training set accuracy: {} %'.format(np.mean(pred == y.ravel())*100))
 
