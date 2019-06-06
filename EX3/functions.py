@@ -38,3 +38,8 @@ def oneVsAll(features, classes, n_labels, reg):
         all_theta[c-1] = res.x
 
     return(all_theta)
+
+def predictOneVsAll(all_theta, features):
+    probs = sigmoid.sigmoid(features.dot(all_theta.T))
+
+    return(np.argmax(probs, axis=1)+1)

@@ -31,8 +31,6 @@ y = data['y']
 # add a column with ones
 X = np.c_[np.ones((data['X'].shape[0],1)), data['X']]
 
-print(X.size)
-
 #print('X: {} (with intercept)'.format(X.shape))
 #print('y: {}'.format(y.shape))
 
@@ -49,8 +47,18 @@ plt.axis('off')
 
 theta = functions.oneVsAll(X, y, 10, 0.1)
 
-print (theta)
+pred = functions.predictOneVsAll(theta, X)
+
+print('Training set accurancy: {} %'.format(np.mean(pred == y.ravel())*100))
+
+# Multiclass Logistic Regression with scikit-learn
 
 
+clf = LogisticRegression(C=10, penalty='12', solver='liblinear')
+
+clf.fit(X[:,1:],y.ravel())
+
+pred2 = clf.predict(X[:,1:])
+print('Training set accuracy: {} %'.format(np.mean(pred2 == y.ravel())*100))
 
 
