@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import sigmoid
+import functions
 
 # load MATLAB files
 from scipy.io import loadmat
@@ -32,18 +33,23 @@ X = np.c_[np.ones((data['X'].shape[0],1)), data['X']]
 
 print(X.size)
 
-print('X: {} (with intercept)'.format(X.shape))
-print('y: {}'.format(y.shape))
+#print('X: {} (with intercept)'.format(X.shape))
+#print('y: {}'.format(y.shape))
 
 theta1, theta2 = weights['Theta1'], weights['Theta2']
 
-print('Theta1: ', theta1.shape)
-print('Theta2: ', theta2.shape)
+#print('Theta1: ', theta1.shape)
+#print('Theta2: ', theta2.shape)
 
 sample = np.random.choice(X.shape[0], 20)
 plt.imshow(X[sample,1:].reshape(-1,20).T)
 plt.axis('off')
-plt.show()
+#plt.show()
+
+
+theta = functions.oneVsAll(X, y, 10, 0.1)
+
+print (theta)
 
 
 
